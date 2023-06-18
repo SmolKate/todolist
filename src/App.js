@@ -1,12 +1,17 @@
 import { useState } from 'react';
-import './App.css';
+import './App.scss';
 import TodoList from './components/TodoList';
 import InputField from './components/InputField';
+import WeekCalendar from './components/Calendar/WeekCalendar';
 import { useDispatch } from 'react-redux';
 import { addTodo } from './store/todoSlice';
+import FullCalendar from '@fullcalendar/react' 
+import dayGridPlugin from '@fullcalendar/daygrid' 
+import interactionPlugin from "@fullcalendar/interaction"
 
 function App() {
   const [text, setText] = useState('')
+  const [value, onChange] = useState(new Date())
 
   const dispatch = useDispatch()
 
@@ -14,22 +19,26 @@ function App() {
     dispatch(addTodo({text}))
     setText('')
   }
-
-  const changeTodoCompleted = (todoId) => {
-    // let newTodos = todos.map(todo => {
-    //   if (todo.id !== todoId) return todo
-    //   return {
-    //     ...todo,
-    //     completed: !todo.completed
-    //   }
-    // })
-    // setTodos(newTodos)
+  const titleFormat = { 
+    month: 'long',
+    year: '2-digit',
+    day: 'numeric',
+    weekday: '2-digit'
   }
-
   return (
     <div className='App'>
-      <InputField text={text} handleInput={setText} handleSubmit={addTask}/>
+      <WeekCalendar />
+      {/* <FullCalendar
+        plugins={[ dayGridPlugin, interactionPlugin ]}
+        initialView = "dayGridWeek"
+        titleFormat = {titleFormat}
+        dateClick={(arg) => console.log(arg.dateStr)}
+      />       */}
       <TodoList />
+      {/* <AddButton />
+      <Footer /> */}
+
+      <InputField text={text} handleInput={setText} handleSubmit={addTask}/>
     </div>
   );
 }
