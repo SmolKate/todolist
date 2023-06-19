@@ -1,0 +1,64 @@
+@import '../index.scss';
+
+.todo_list {
+    border: 4px solid $themeColorBlue;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    position: relative;
+    bottom: 40px;
+    background-color: $themeColorSomeWhite;
+    min-height: 300px;
+    min-width: 650px;
+
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+
+.todo_item {
+    color: $themeColorBlack;
+    text-shadow: none;
+   
+    .delete {
+        color: $themeColorGreen;
+        cursor: pointer;
+    }
+    
+    input:checked + label {
+        background-color: $themeColorBlue;
+    }
+
+    input:checked + span {
+        text-decoration: line-through;
+    }
+
+    input {
+        display: none;/* <--скрываем дефолтный чекбокс */
+      }
+    .styled_check {/* <-- стилизируем новый */
+        height: 12px;
+        width: 12px;
+        border: 1px solid gray;
+        display: inline-block;
+        position: relative;
+        background-color:#FFF;
+        border-radius:2px;
+        padding:3px;
+      }
+      input:checked + .styled_check:before {/* <-- ставим иконку, когда чекбокс включен  */
+        content: '\2714';
+        position: absolute;
+        top: -5px;
+        left: 0;
+        font-size:23px;
+        color:green;
+      }
+}

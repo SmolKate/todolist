@@ -5,7 +5,6 @@ import CalendarHeader from './CalendarHeader'
 import CalendarDays from './CalendarDays'
 import CalendarWeekDays from './CalendarWeekDays'
 import ChangeWeekButton from './ChangeWeekButton'
-import background from '../../assets/stars.jpg'
 
 const Calendar = () => {
   const [currentDay, setCurrentDay] = useState(new Date())
@@ -21,7 +20,6 @@ const Calendar = () => {
   
   return (
     <div className={s.calendar}>
-        {/* <img className={s.main_background} src={background}></img> */}
         <CalendarHeader currentDay={currentDay}/>
         <CalendarDays currentDay={currentDay}/>
         <CalendarWeekDays currentDay={currentDay}/>

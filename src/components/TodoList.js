@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import s from './todoList.module.scss'
 import TodoItem from "./TodoItem"
 
 const TodoList = () => {
@@ -11,7 +12,7 @@ const TodoList = () => {
     }
 
     return (
-        <div>
+        <div className={s.todo_list}>
             <h2>Tasks for {selectedDay}</h2>
             <ul>
                 {todos.map(todo => <TodoItem key={todo.id} {...todo} />)}

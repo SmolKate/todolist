@@ -1,11 +1,14 @@
-// colors
-$themeColorWhite: white;
-$themeColorSomeWhite: #ddd6d6;
-$themeColorGray: #4f6881;
-$themeColorDark: #33373B;
-$themeColorBlack: black;
-$themeColorBlue: rgb(40, 15, 99);
-$themeColorGreen: rgb(14, 116, 77);
+// // colors
+// $themeColorWhite: white;
+// $themeColorSomeWhite: #ddd6d6;
+// $themeColorGray: #4f6881;
+// $themeColorDark: #33373B;
+// $themeColorBlack: black;
+// $themeColorBlue: rgb(0, 32, 109);
+// $themeColorGreen: rgb(14, 116, 77);
+
+@import '../../index.scss';
+
 
 .main_background {
   position: relative;
@@ -21,10 +24,10 @@ $themeColorGreen: rgb(14, 116, 77);
     "l d r"
     "l wd r";
     gap: 10px;
-    align-items: center;
     background-color: $themeColorBlue;
     background-image: url(../../assets/stars.jpg);
     background-size: cover;
+    min-width: 650px;
     
   }
   
@@ -113,7 +116,6 @@ $themeColorGreen: rgb(14, 116, 77);
     flex-grow: 0;
     flex-basis: calc(100% / 7);
     width: calc(100% / 7);
-    // text-align: center;
   }
     
 
