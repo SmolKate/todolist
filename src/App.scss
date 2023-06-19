@@ -121,21 +121,21 @@ main {
   align-items: center;
 }
 
-.col {
-  flex-grow: 1;
-  flex-basis: 0;
-  max-width: 100%;
-}
+// .col {
+//   flex-grow: 1;
+//   flex-basis: 0;
+//   max-width: 100%;
+// }
 
 .col-start {
   justify-content: flex-start;
   text-align: left;
 }
 
-.col-center {
-  justify-content: center;
-  text-align: center;
-}
+// .col-center {
+//   justify-content: center;
+//   text-align: center;
+// }
 
 .col-end {
   justify-content: flex-end;

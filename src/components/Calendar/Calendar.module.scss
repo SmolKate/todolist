@@ -1,14 +1,30 @@
+// colors
+$themeColorWhite: white;
+$themeColorSomeWhite: #ddd6d6;
+$themeColorGray: #4f6881;
+$themeColorDark: #33373B;
+$themeColorBlack: black;
+$themeColorBlue: rgb(40, 15, 99);
+$themeColorGreen: rgb(14, 116, 77);
+
+.main_background {
+  position: relative;
+
+}
 
 .calendar {
     display: grid;
-    grid-template-columns: 100px 1fr 100px;
-    grid-template-rows: 50px 80px 30px;
+    grid-template-columns: 50px 1fr 50px;
+    grid-template-rows: 50px 80px 70px;
     grid-template-areas: 
     "h h h"
     "l d r"
     "l wd r";
     gap: 10px;
-    background-color: darkblue;
+    align-items: center;
+    background-color: $themeColorBlue;
+    background-image: url(../../assets/stars.jpg);
+    background-size: cover;
     
   }
   
@@ -17,17 +33,33 @@
     text-transform: uppercase;
     font-weight: 700;
     font-size: 115%;
-    padding: 1.5em 0;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .date_header {
+      cursor: default;
+    }
+
+    .today_ref {
+      cursor: pointer;
+    }
+
+    .today_ref:hover {
+      color: $themeColorBlack;
+    }
 }
 
 .body {
     grid-area: d;
     display: flex;
     flex-direction: row;
-    gap: 5px;
+    gap: 10px;
 
     .day, .today, .selected_day {
-      border: 1px solid white;
+      color: $themeColorSomeWhite;
+      border: 1px solid $themeColorSomeWhite;
       border-radius: 10px;
       flex-grow: 0;
       flex-basis: calc(100% / 7);
@@ -35,6 +67,8 @@
       text-align: center;
       line-height: 80px;
       font-size: 40px;
+      margin: 2px;
+      cursor: pointer;
 
       .number {
         margin: 5px;
@@ -42,12 +76,14 @@
     }
 
     .selected_day {
-      background: rgba(255, 255, 255, 0.3)
+      background: rgba(255, 255, 255, 0.3);
+      color: $themeColorDark;
     }
 
     .today {
-      border-color:  #ff1a79 ;
-     
+      border-color:  $themeColorGreen;
+      border-width: 3px; 
+      margin: 0px;    
     }
 }
 
@@ -61,7 +97,7 @@
 
 .btn_right, .btn_left {
   margin: auto;
-  padding-bottom: 30px;
+  padding-bottom: 70px;
 }
 
 
@@ -70,12 +106,23 @@
     grid-area: wd;
     display: flex;
     flex-direction: row;
+    gap: 10px;
+    cursor: default;
+
+  .week_day {
+    flex-grow: 0;
+    flex-basis: calc(100% / 7);
+    width: calc(100% / 7);
+    // text-align: center;
+  }
+    
+
 }
   
-  .calendar .header .icon {
-    cursor: pointer;
-    transition: 0.15s ease-out;
-  }
+  // .calendar .header .icon {
+  //   cursor: pointer;
+  //   transition: 0.15s ease-out;
+  // }
   
   .calendar .header .icon:hover {
     /*transform: scale(1.75);*/

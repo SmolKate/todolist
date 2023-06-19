@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useDispatch, useSelector } from 'react-redux'
 import s from './Calendar.module.scss'
 import { format, startOfWeek, addDays, isSameDay } from "date-fns";
+import { setSelectedDate } from '../../store/todoSlice';
 
 const CalendarDays = ({currentDay}) => {
 
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    
+    const dispatch = useDispatch()
+    const selectedDay = useSelector(state => state.todos.selectedDay)
+
     const dateFormat = "d";
     const startDate = startOfWeek(currentDay, { weekStartsOn: 1 })
     let days = []  
@@ -15,14 +17,14 @@ const CalendarDays = ({currentDay}) => {
     }
 
     const onDateClickHandle = (day) => {
-        const dayStr = format(day, "ccc dd MMM yy")
+        const dayStr = format(day, "dd MMM yy")
         console.log(dayStr)
-        setSelectedDate(day);
+        dispatch(setSelectedDate({dayStr}))
     };
 
     let daysRow = days.map((day) => {
         let formattedDay = format(day, dateFormat)
-        return <div key={day} className={isSameDay(day, selectedDate) ? s.selected_day
+        return <div key={day} className={format(day, 'dd MMM yy') === selectedDay ? s.selected_day
                                 : isSameDay(day, new Date()) ? s.today
                                 : s.day}
                         onClick={() => onDateClickHandle(day)}>

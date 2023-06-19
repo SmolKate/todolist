@@ -5,8 +5,9 @@ const CalendarHeader = ({currentDay}) => {
     const dateFormat = "MMM, yyyy";
     return (
       <div className={s.header}>
-        <div className="col col-center">
-          <span>{format(currentDay, dateFormat)}</span>
+        <div className={s.today_ref}>Today</div>
+        <div className={s.date_header}>
+          {format(currentDay, dateFormat)}
         </div>
       </div>
     );

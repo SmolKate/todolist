@@ -3,20 +3,17 @@ import './App.scss';
 import TodoList from './components/TodoList';
 import InputField from './components/InputField';
 import WeekCalendar from './components/Calendar/WeekCalendar';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from './store/todoSlice';
-import FullCalendar from '@fullcalendar/react' 
-import dayGridPlugin from '@fullcalendar/daygrid' 
-import interactionPlugin from "@fullcalendar/interaction"
 
 function App() {
-  const [text, setText] = useState('')
-  const [value, onChange] = useState(new Date())
 
+  const [text, setText] = useState('')
+  const selectedDay = useSelector(state => state.todos.selectedDay)
   const dispatch = useDispatch()
 
   const addTask = () => {
-    dispatch(addTodo({text}))
+    dispatch(addTodo({text, day: selectedDay}))
     setText('')
   }
   const titleFormat = { 
@@ -28,12 +25,6 @@ function App() {
   return (
     <div className='App'>
       <WeekCalendar />
-      {/* <FullCalendar
-        plugins={[ dayGridPlugin, interactionPlugin ]}
-        initialView = "dayGridWeek"
-        titleFormat = {titleFormat}
-        dateClick={(arg) => console.log(arg.dateStr)}
-      />       */}
       <TodoList />
       {/* <AddButton />
       <Footer /> */}

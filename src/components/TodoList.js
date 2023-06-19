@@ -2,12 +2,22 @@ import { useSelector } from "react-redux"
 import TodoItem from "./TodoItem"
 
 const TodoList = () => {
-    const todos = useSelector(state => state.todos.todos)
+    const selectedDay = useSelector(state => state.todos.selectedDay)
+    const todoList = useSelector(state => state.todos.todoList)
+
+    let todos = [] 
+    if (!!todoList.find(obj => obj.day === selectedDay)) {
+        todos = todoList.find(obj => obj.day === selectedDay).todos
+    }
 
     return (
-    <ul>
-        {todos.map(todo => <TodoItem key={todo.id} {...todo} />)}
-    </ul>
+        <div>
+            <h2>Tasks for {selectedDay}</h2>
+            <ul>
+                {todos.map(todo => <TodoItem key={todo.id} {...todo} />)}
+            </ul>
+        </div>
+    
     )
 }
 
