@@ -66,6 +66,7 @@ li {
     input:checked + label + span {
         text-decoration: line-through;
         background-color: pink;
+        text-align: end;
     }
 }
 
