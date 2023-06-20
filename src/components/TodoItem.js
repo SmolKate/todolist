@@ -9,9 +9,13 @@ const TodoItem = ({id, text, completed}) => {
 
     return (
         <li className={s.todo_item} key={id}>
-          <input type='checkbox' checked={completed} onChange={() => dispatch(changeTodoCompleted({id, day: selectedDay}))}></input>
-          <div className={s.styled_check}></div>
-          <span>{text}</span>
+            <input type='checkbox' id={id} checked={completed} onChange={() => dispatch(changeTodoCompleted({id, day: selectedDay}))}></input>
+            <label for={id} className={s.container}></label>
+
+            {/* <span class="checkmark"></span> */}
+            <span>{text}</span>
+          
+          
           <span className={s.delete} onClick={() => dispatch(removeTodo({id, day: selectedDay}))}>&#10008;</span>
         </li>
     )

@@ -30,35 +30,45 @@ li {
     .delete {
         color: $themeColorGreen;
         cursor: pointer;
+        text-align: center;
+
+    }
+
+    input[type=checkbox] {
+        display: none;
     }
     
-    input:checked + label {
-        background-color: $themeColorBlue;
+    .container {
+        padding-left: 20px;
+        padding-bottom: 2px;
+        height: 100%;
+    }
+    
+    .container::before {
+        content: '';
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        background-color: $themeColorWhite;
+        vertical-align: middle;
+        margin: auto 20px;
+        border: 2px solid $themeColorDark;
+        border-radius: 3px;
+    
     }
 
-    input:checked + span {
+    input:checked + label::before {
+        content: '\2714';
+        text-align: center;
+        line-height: 14px;
+    }
+  
+    input:checked + label + span {
         text-decoration: line-through;
     }
+}
 
-    input {
-        display: none;/* <--скрываем дефолтный чекбокс */
-      }
-    .styled_check {/* <-- стилизируем новый */
-        height: 12px;
-        width: 12px;
-        border: 1px solid gray;
-        display: inline-block;
-        position: relative;
-        background-color:#FFF;
-        border-radius:2px;
-        padding:3px;
-      }
-      input:checked + .styled_check:before {/* <-- ставим иконку, когда чекбокс включен  */
-        content: '\2714';
-        position: absolute;
-        top: -5px;
-        left: 0;
-        font-size:23px;
-        color:green;
-      }
+
+input[type=checkbox] {
+    display: none;
 }
